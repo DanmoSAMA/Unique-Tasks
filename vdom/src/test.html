@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			a {
+				text-decoration: none;
+				color: purple;
+			}
+			#app {
+				width: 600px;
+				height: 600px;
+				margin: 50px auto;
+				background-color: #bfa;
+				position: relative;
+			}
+			.left {
+				width: 200px;
+				height: 300px;
+				background-color: orange;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.right {
+				width: 600px;
+				height: 200px;
+				background-color: blueviolet;
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			li {
+				line-height: 30px;
+				background-color: crimson;
+				border-bottom: 2px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="wrapper">
+				<div class="left">
+					<ul class="mylist">
+						<li>
+							apple
+              grape
+							<a href="javascript:;">test-a</a>
+              <a href="javascript:;">test-b</a>
+							pear
+						</li>
+						<li>banana</li>
+						<li>
+							<a href="javascript:;">test-c</a>
+						</li>
+					</ul>
+				</div>
+				<div class="right">
+          <span>Hello</span>
+          <em>Hi</em>
+          <b>How</b>
+          <i>Are</i>
+          <br />
+          You?
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
