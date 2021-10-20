@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "depd": "^2.0.0",
+    "has-tostringtag": "^1.0.0",
+    "is-generator-function": "^1.0.10",
+    "koa": "^2.13.3",
+    "koa-router": "^10.1.1",
+    "only": "^0.0.2"
+  }
+}
