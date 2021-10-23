@@ -1,4 +1,7 @@
 # Unique-Tasks
-Many tasks.
+Many tasks:
 
- 第一期：手搓vdom
+* First: Write vdom
+
+* Second: Read source code of Koa and Koa-router, and write my-router 
+

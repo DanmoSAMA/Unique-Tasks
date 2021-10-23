@@ -45,7 +45,6 @@ Layer.prototype.params = function (path, captures, existingParams) {
       if (c && c.length !== 0) params[this.paramNames[i].name] = c ? safeDecodeURIComponent(c) : c;
     }
   }
-
   return params;
 };
 

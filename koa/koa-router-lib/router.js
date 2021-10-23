@@ -184,12 +184,15 @@ Router.prototype.routes = Router.prototype.middleware = function () {
   return dispatch;  // 暴露dispatch函数
 };
 
+// 如果路由匹配失败，执行该中间件，modify请求头和状态码
 Router.prototype.allowedMethods = function (options) {
   options = options || {};
   const implemented = this.methods;
 
   return function allowedMethods(ctx, next) {
     return next().then(function() {
+      // 如果匹配到了path，但是没有对应的method，状态码也会变为404
+      // 然后经过下边implemented的逻辑，会转化为501，即服务器没有对应的方法
       const allowed = {};
 
       if (!ctx.status || ctx.status === 404) {
@@ -200,9 +203,11 @@ Router.prototype.allowedMethods = function (options) {
             allowed[method] = method;
           }
         }
-
+        // allowed并不是服务器能够支持的方法，
+        // 而是比如说你要请求/hello，allowed会提示你请求/hello时可以使用的方法
+        // 此处是'HEAD'和'GET'
         const allowedArr = Object.keys(allowed);
-
+        // 请求的方法不被服务器所支持，如TRACE
         if (!~implemented.indexOf(ctx.method)) {
           if (options.throw) {
             let notImplementedThrowable = (typeof options.notImplemented === 'function')
@@ -215,6 +220,7 @@ Router.prototype.allowedMethods = function (options) {
             ctx.set('Allow', allowedArr.join(', '));
           }
         } else if (allowedArr.length) {
+          // 方法是'OPTIONS'，则设置Allow头，显示服务器对该path提供什么方法
           if (ctx.method === 'OPTIONS') {
             ctx.status = 200;
             ctx.body = '';
